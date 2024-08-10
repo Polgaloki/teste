@@ -1,0 +1,131 @@
+<head>
+        <title>RouteLib</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" integrity="sha512-Zcn6bjR/8RZbLEpLIeOwNtzREBAJnUKESxces60Mpoj+2okopSAcSUIUOseddDm0cxnGQzxIR7vJgsLZbdLE3w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" integrity="sha512-BwHfrr4c9kmRkLw6iXFdzcdWV/PGkVgiIyIWLLlTSXzWQzxuSg4DiQUCpauz/EWjgk5TYQqX/kvn9pG1NpYfqg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script type="module" src="/scripts/maps.js"></script>
+        <script type="module" src="scripts/dom_elements.js"></script>
+        <link rel="stylesheet" href="/styles/main.css">
+        
+        <!-- SideBar -->
+        <link rel="stylesheet" href="/styles/sidebar.css">
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <!-- SearchBar -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+        <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+      
+    </head>
+    <h1> <img src="styles/logocanto.png" class="logocanto"></h1>
+    <body>
+       
+        
+         <div class="info-container"> 
+            <div id="new-session-button" style="display: none;" onclick="new_session()">Generate new instance</div>
+            <div class="limit-container" onclick="show_download_button()">
+                <div id="limit" onclick="handle_limit_click()">100</div>meters
+            </div>
+            <div id="download" style="display: none;"">Download</div>
+            <div id="file_container" onclick="document.getElementById('file_entry').click();">
+                <input type="file" id="file_entry" style="display: none;">
+                <label>insert your csv file</label>
+            </div>
+        </div>
+        
+     
+        <div id="map-container">
+            <div id="map"></div>
+        </div>
+        
+       
+        <div class="select-container-container">  
+            <div class="select-container">  
+                <h4>Balanced Splitters</h4>  
+                <select id="bspliters" multiple></select>  
+                <input type="text" id="new_bspliter_id" placeholder="ID">  
+                <input type="text" id="new_bspliter_cost" placeholder="Cost">  
+                <input type="text" id="new_bspliter_attenuation" placeholder="Attenuation">  
+                <div class="select-option-adder" onclick="new_bspliter()">Add +</div>  
+            </div>  
+            <div class="select-container">  
+                <h4>Unbalanced Splitters</h4>  
+                <select id="uspliters" multiple></select>  
+                <input type="text" id="new_uspliter_id" placeholder="ID">  
+                <input type="text" id="new_uspliter_cost" placeholder="Cost">  
+                <input type="text" id="new_uspliter_attenuation" placeholder="Attenuation">  
+                <div class="select-option-adder" onclick="new_uspliter()">Add +</div>  
+            </div>  
+            <div class="select-container">  
+                <h4>Cables</h4>  
+                <select id="cables" multiple></select>  
+                <input type="text" id="new_cable_id" placeholder="ID">  
+                <input type="text" id="new_cable_cost" placeholder="Cost">  
+                <input type="text" id="new_cable_attenuation" placeholder="Attenuation">  
+                <div class="select-option-adder" onclick="new_cable()">Add +</div>  
+            </div>  
+            <div class="select-container">  
+                <h4>SpliceBoxes</h4>  
+                <select id="spliceboxes" multiple></select>  
+                <input type="text" id="new_splicebox_id" placeholder="ID">  
+                <input type="text" id="new_splicebox_cost" placeholder="Cost">  
+                <input type="text" id="new_splicebox_attenuation" placeholder="Attenuation">  
+                <div class="select-option-adder" onclick="new_splicebox()">Add +</div>  
+            </div>  
+        </div>  
+
+
+        
+        <div class="circle"></div>
+
+         <!-- SideBar -->
+         <nav class="menu-lateral">
+        
+            <div class="btn-expandir">
+                <i class="bi bi-list" id="btn-exp"></i>
+            </div>
+            <ul>
+        
+                <li class="item-menu">
+                    <a href="home.html" id="home">
+                        <span class="icon"><i class="bi bi-house"></i></span>
+                        <span class="txt-link">Home</span>
+                    </a>
+                </li>
+        
+                <li class="item-menu">
+                    <a href="infragen.html" id="infra1">
+                        <span class="icon"><i class="bi bi-crosshair"></i></span>
+                        <span class="txt-link">InfraGen1</span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="infra2.html" id="infra2">
+                        <span class="icon"><i class="bi bi-geo"></i></span>
+                        <span class="txt-link">InfraGen2</span>
+                    </a>
+                </li>
+        
+                <li class="item-menu">
+                    <a href="index.html" id="mapa">
+                        <span class="icon"><i class="bi bi-map"></i></span>
+                        <span class="txt-link">RouteLib</span>
+                    </a>
+                </li>
+                <li class="item-menu item-menu-info">
+                    <a href="info.html" id="informa">
+                        <span class="icon"><i class="bi bi-info-circle"></i></span>
+                        <span class="txt-link">Informações</span>
+                    </a>
+                </li>
+        
+            </ul>
+        
+        </nav>
+
+           <!-- Script SideBar -->
+           <script src="./scripts/sidebar.js"></script>
+           <script src="./scripts/transition.js"></script>
+           
+
+
+    </body>
+</html>
