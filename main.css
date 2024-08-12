@@ -1,0 +1,166 @@
+/* Estilo geral do corpo */
+body {
+    background-color: #222831;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h3 {
+    margin-top: 1em;
+}
+
+/* Estilo do container do mapa */
+#map-container {
+    margin-left: 90px;
+    height: 100%;
+    width: calc(100% - 90px);
+    position: relative;
+    z-index: 1;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+/* Container principal que segura todos os seletores e botões */
+.select-container-container {
+    position: absolute;
+    bottom: -300px; /* Começa fora da tela */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 2;
+    transition: bottom 0.5s ease;
+}
+
+/* Classe para mostrar a div */
+.select-container-container.show {
+    bottom: 10px; /* Muda a posição para visível */
+}
+
+/* Estilo do botão em forma de seta */
+#toggleButton {
+    position: absolute;
+    top: -20px;
+    width: 40px;
+    height: 40px;
+    background-color: #FF5722;
+    color: #ffffff;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.3s, transform 0.5s ease;
+}
+
+#toggleButton:hover {
+    background-color: #E64A19;
+}
+
+.select-container-container.show #toggleButton {
+    transform: rotate(180deg); /* Rotaciona a seta para baixo quando a div está visível */
+}
+
+/* Cada seletor individual */
+.select-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    margin: 0 10px;
+}
+
+/* Estilo dos títulos dentro dos seletores */
+.select-container h4 {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Estilo das caixas de seleção */
+.select-container select {
+    margin-bottom: 10px;
+    padding: 8px;
+    width: 100%;
+    border-radius: 5px;
+    background-color: #3B6275;
+    color: white;
+    border: none;
+    outline: none;
+}
+
+/* Estilo dos campos de entrada */
+.select-container input {
+    margin-bottom: 10px;
+    padding: 8px;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    background-color: #2B3033;
+    color: white;
+    outline: none;
+}
+
+/* Estilo do botão "Add +" */
+.select-option-adder button {
+    padding: 10px;
+    width: 100%;
+    background-color: #3B6275;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.select-option-adder button:hover {
+    background-color: #2B3033;
+}
+
+/* Estilo do container de informações */
+.info-container {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 2;
+    color: white;
+}
+
+.info-container > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: large;
+    margin: 0 10px;
+    padding: 10px;
+    background-color: #3B6275;
+    border-radius: 5px;
+}
+
+.info-container > div:hover {
+    background-color: #2B3033;
+}
+
+/* Estilo do container de limite */
+.limit-container {
+    display: flex;
+    flex-direction: row;
+    background-color: darkorange;
+}
+
+/* Container de arquivo escondido */
+#file_container {
+    display: none;
+}
