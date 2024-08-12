@@ -174,9 +174,9 @@ function parseFields(inputString) {
 
 async function new_splicebox(){
     const obj = {
-        id: document.getElementById('splicebox-id').value,
-        cost: document.getElementById('splicebox-cost').value,
-        attenuation: document.getElementById('splicebox-attenuation').value
+        id: parseInt(document.getElementById('splicebox-id').value), 
+        cost: parseFloat(document.getElementById('splicebox-cost').value), 
+        attenuation: parseFloat(document.getElementById('splicebox-attenuation').value) 
     };
     const response = await fetch(API_HOST + "/add-splicebox/", {
         method: "POST",
@@ -184,7 +184,8 @@ async function new_splicebox(){
         headers: { 'Content-Type': 'application/json' }
     });
     if (response.status != 200){
-        alert("Error while adding: " + await response.json());
+        const errorData = await response.json();
+        alert("Error while adding: " + JSON.stringify(errorData));
     } else {
         window.location.reload();
     }
@@ -192,9 +193,9 @@ async function new_splicebox(){
 
 async function new_cable(){
     const obj = {
-        id: document.getElementById('cable-id').value,
-        cost: document.getElementById('cable-cost').value,
-        attenuation: document.getElementById('cable-attenuation').value
+        id: parseInt(document.getElementById('cable-id').value), 
+        cost: parseFloat(document.getElementById('cable-cost').value), 
+        attenuation: parseFloat(document.getElementById('cable-attenuation').value) 
     };
     const response = await fetch(API_HOST + "/add-cable/", {
         method: "POST",
@@ -202,7 +203,8 @@ async function new_cable(){
         headers: { 'Content-Type': 'application/json' }
     });
     if (response.status != 200){
-        alert("Error while adding: " + await response.json());
+        const errorData = await response.json();
+        alert("Error while adding: " + JSON.stringify(errorData));
     } else {
         window.location.reload();
     }
@@ -210,10 +212,10 @@ async function new_cable(){
 
 async function new_uspliter(){
     const obj = {
-        id: document.getElementById('usplitter-id').value,
-        loss1: document.getElementById('usplitter-loss1').value,
-        loss2: document.getElementById('usplitter-loss2').value,
-        cost: document.getElementById('usplitter-cost').value
+        id: parseInt(document.getElementById('usplitter-id').value), 
+        loss1: parseFloat(document.getElementById('usplitter-loss1').value), 
+        loss2: parseFloat(document.getElementById('usplitter-loss2').value), 
+        cost: parseFloat(document.getElementById('usplitter-cost').value) 
     };
     const response = await fetch(API_HOST + "/add-uspliter/", {
         method: "POST",
@@ -221,7 +223,8 @@ async function new_uspliter(){
         headers: { 'Content-Type': 'application/json' }
     });
     if (response.status != 200){
-        alert("Error while adding: " + await response.json());
+        const errorData = await response.json();
+        alert("Error while adding: " + JSON.stringify(errorData));
     } else {
         window.location.reload();
     }
@@ -229,10 +232,10 @@ async function new_uspliter(){
 
 async function new_bspliter(){
     const obj = {
-        id: document.getElementById('bsplitter-id').value,
-        loss: document.getElementById('bsplitter-loss').value,
-        split: document.getElementById('bsplitter-split').value,
-        cost: document.getElementById('bsplitter-cost').value
+        id: parseInt(document.getElementById('bsplitter-id').value), 
+        loss: parseFloat(document.getElementById('bsplitter-loss').value), 
+        split: parseFloat(document.getElementById('bsplitter-split').value), 
+        cost: parseFloat(document.getElementById('bsplitter-cost').value) 
     };
     const response = await fetch(API_HOST + "/add-bspliter/", {
         method: "POST",
@@ -240,7 +243,8 @@ async function new_bspliter(){
         headers: { 'Content-Type': 'application/json' }
     });
     if (response.status != 200){
-        alert("Error while adding: " + await response.json());
+        const errorData = await response.json();
+        alert("Error while adding: " + JSON.stringify(errorData));
     } else {
         window.location.reload();
     }
