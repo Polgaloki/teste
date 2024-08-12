@@ -172,176 +172,85 @@ function parseFields(inputString) {
 
 
 
-async function new_bspliter() {  
-    // Capturando os valores dos campos do formulário  
-    const id = document.getElementById("new_bspliter_id").value;  
-    const loss = document.getElementById("new_bspliter_loss").value;  
-    const split = document.getElementById("new_bspliter_split").value;  
-    const cost = document.getElementById("new_bspliter_cost").value;  
+async function new_splicebox(){
+    const obj = {
+        id: document.getElementById('splicebox-id').value,
+        cost: document.getElementById('splicebox-cost').value,
+        attenuation: document.getElementById('splicebox-attenuation').value
+    };
+    const response = await fetch(API_HOST + "/add-splicebox/", {
+        method: "POST",
+        body: JSON.stringify(obj),
+        headers: { 'Content-Type': 'application/json' }
+    });
+    if (response.status != 200){
+        alert("Error while adding: " + await response.json());
+    } else {
+        window.location.reload();
+    }
+}
 
-    // Criando objeto a partir dos valores  
-    const obj = {  
-        id: parseInt(id),  
-        loss: parseFloat(loss),  
-        split: parseFloat(split),  
-        cost: parseFloat(cost)  
-    };  
+async function new_cable(){
+    const obj = {
+        id: document.getElementById('cable-id').value,
+        cost: document.getElementById('cable-cost').value,
+        attenuation: document.getElementById('cable-attenuation').value
+    };
+    const response = await fetch(API_HOST + "/add-cable/", {
+        method: "POST",
+        body: JSON.stringify(obj),
+        headers: { 'Content-Type': 'application/json' }
+    });
+    if (response.status != 200){
+        alert("Error while adding: " + await response.json());
+    } else {
+        window.location.reload();
+    }
+}
 
-    // Enviando a requisição para o servidor  
-    const response = await fetch(API_HOST + "/add-bspliter/", {  
-        method: "POST",  
-        headers: {  
-            'Content-Type': 'application/json'  
-        },  
-        body: JSON.stringify(obj)  
-    });  
+async function new_uspliter(){
+    const obj = {
+        id: document.getElementById('usplitter-id').value,
+        loss1: document.getElementById('usplitter-loss1').value,
+        loss2: document.getElementById('usplitter-loss2').value,
+        cost: document.getElementById('usplitter-cost').value
+    };
+    const response = await fetch(API_HOST + "/add-uspliter/", {
+        method: "POST",
+        body: JSON.stringify(obj),
+        headers: { 'Content-Type': 'application/json' }
+    });
+    if (response.status != 200){
+        alert("Error while adding: " + await response.json());
+    } else {
+        window.location.reload();
+    }
+}
 
-    // Tratando a resposta  
-    if (response.status !== 200) {  
-        alert("Error while adding: " + await response.json());  
-    } else {  
-        // Adicionando a nova opção ao select  
-        const select = document.getElementById("bspliters");  
-        const option = document.createElement("option");  
-        option.value = obj.id;  
-        option.textContent = `ID: ${obj.id}, Loss: ${obj.loss}, Split: ${obj.split}, Cost: ${obj.cost}`;  
-        select.appendChild(option);  
+async function new_bspliter(){
+    const obj = {
+        id: document.getElementById('bsplitter-id').value,
+        loss: document.getElementById('bsplitter-loss').value,
+        split: document.getElementById('bsplitter-split').value,
+        cost: document.getElementById('bsplitter-cost').value
+    };
+    const response = await fetch(API_HOST + "/add-bspliter/", {
+        method: "POST",
+        body: JSON.stringify(obj),
+        headers: { 'Content-Type': 'application/json' }
+    });
+    if (response.status != 200){
+        alert("Error while adding: " + await response.json());
+    } else {
+        window.location.reload();
+    }
+}
 
-        // Limpar campos após adicionar  
-        document.getElementById("new_bspliter_id").value = '';  
-        document.getElementById("new_bspliter_loss").value = '';  
-        document.getElementById("new_bspliter_split").value = '';  
-        document.getElementById("new_bspliter_cost").value = '';  
-    }  
-}  
-
-async function new_cable() {  
-    // Capturando os valores dos campos do formulário  
-    const id = document.getElementById("new_cable_id").value;  
-    const cost = document.getElementById("new_cable_cost").value;  
-    const attenuation = document.getElementById("new_cable_attenuation").value;  
-
-    // Criando objeto a partir dos valores  
-    const obj = {  
-        id: parseInt(id),  
-        cost: parseFloat(cost),  
-        attenuation: parseFloat(attenuation)  
-    };  
-
-    // Enviando a requisição para o servidor  
-    const response = await fetch(API_HOST + "/add-cable/", {  
-        method: "POST",  
-        headers: {  
-            'Content-Type': 'application/json'  
-        },  
-        body: JSON.stringify(obj)  
-    });  
-
-    // Tratando a resposta  
-    if (response.status !== 200) {  
-        alert("Error while adding: " + await response.json());  
-    } else {  
-        // Adicionando a nova opção ao select  
-        const select = document.getElementById("cables");  
-        const option = document.createElement("option");  
-        option.value = obj.id;  
-        option.textContent = `ID: ${obj.id}, Cost: ${obj.cost}, Attenuation: ${obj.attenuation}`;  
-        select.appendChild(option);  
-
-        // Limpar campos após adicionar  
-        document.getElementById("new_cable_id").value = '';  
-        document.getElementById("new_cable_cost").value = '';  
-        document.getElementById("new_cable_attenuation").value = '';  
-    }  
-}  
-
-async function new_uspliter() {  
-    // Capturando os valores dos campos do formulário  
-    const id = document.getElementById("new_uspliter_id").value;  
-    const loss1 = document.getElementById("new_uspliter_loss1").value;  
-    const loss2 = document.getElementById("new_uspliter_loss2").value;  
-    const cost = document.getElementById("new_uspliter_cost").value;  
-
-    // Criando objeto a partir dos valores  
-    const obj = {  
-        id: parseInt(id),  
-        loss1: parseFloat(loss1),  
-        loss2: parseFloat(loss2),  
-        cost: parseFloat(cost)  
-    };  
-
-    // Enviando a requisição para o servidor  
-    const response = await fetch(API_HOST + "/add-uspliter/", {  
-        method: "POST",  
-        headers: {  
-            'Content-Type': 'application/json'  
-        },  
-        body: JSON.stringify(obj)  
-    });  
-
-    // Tratando a resposta  
-    if (response.status !== 200) {  
-        alert("Error while adding: " + await response.json());  
-    } else {  
-        // Adicionando a nova opção ao select  
-        const select = document.getElementById("uspliters");  
-        const option = document.createElement("option");  
-        option.value = obj.id;  
-        option.textContent = `ID: ${obj.id}, Loss1: ${obj.loss1}, Loss2: ${obj.loss2}, Cost: ${obj.cost}`;  
-        select.appendChild(option);  
-
-        // Limpar campos após adicionar  
-        document.getElementById("new_uspliter_id").value = '';  
-        document.getElementById("new_uspliter_loss1").value = '';  
-        document.getElementById("new_uspliter_loss2").value = '';  
-        document.getElementById("new_uspliter_cost").value = '';  
-    }  
-}  
-
-async function new_splicebox() {  
-    // Capturando os valores dos campos do formulário  
-    const id = document.getElementById("new_splicebox_id").value;  
-    const cost = document.getElementById("new_splicebox_cost").value;  
-    const attenuation = document.getElementById("new_splicebox_attenuation").value;  
-
-    // Criando objeto a partir dos valores  
-    const obj = {  
-        id: parseInt(id),  
-        cost: parseFloat(cost),  
-        attenuation: parseFloat(attenuation)  
-    };  
-
-    // Enviando a requisição para o servidor  
-    const response = await fetch(API_HOST + "/add-splicebox/", {  
-        method: "POST",  
-        headers: {  
-            'Content-Type': 'application/json'  
-        },  
-        body: JSON.stringify(obj)  
-    });  
-
-    // Tratando a resposta  
-    if (response.status !== 200) {  
-        alert("Error while adding: " + await response.json());  
-    } else {  
-        // Adicionando a nova opção ao select  
-        const select = document.getElementById("spliceboxes");  
-        const option = document.createElement("option");  
-        option.value = obj.id;  
-        option.textContent = `ID: ${obj.id}, Cost: ${obj.cost}, Attenuation: ${obj.attenuation}`;  
-        select.appendChild(option);  
-
-        // Limpar campos após adicionar  
-        document.getElementById("new_splicebox_id").value = '';  
-        document.getElementById("new_splicebox_cost").value = '';  
-        document.getElementById("new_splicebox_attenuation").value = '';  
-    }  
-}  
-
-// Exportando funções globais  
-window.new_splicebox = new_splicebox;  
-window.new_cable = new_cable;  
-window.new_uspliter = new_uspliter;  
-window.new_bspliter = new_bspliter;  
-// Caso haja outras funções a serem exportadas, como as de limite, mantenha as mencionadas  
-export { get_limit, get_mode, set_mode, show_download_button, hide_download_button, get_selected, read_files, fill_selects };
+window.new_splicebox = new_splicebox;
+window.new_cable = new_cable;
+window.new_uspliter = new_uspliter;
+window.new_bspliter = new_bspliter;
+window.read_files = read_files;
+window.handle_limit_click = handle_limit_click
+window.new_session = handle_new_session_click 
+export { get_limit, get_mode, set_mode, show_download_button, hide_download_button, get_selected, read_files, fill_selects }
